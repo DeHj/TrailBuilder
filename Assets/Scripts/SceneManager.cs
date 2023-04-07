@@ -4,28 +4,27 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour
 {
     public CameraManager cameraManager;
+    [Tooltip("Bike builder, that creates bike model")]
     public BikeBuilder bikeBuilder;
     public UserInputManager userInputManager;
 
-    private Bike bike;
+    private Bike _bike;
 
     private void Start()
     {
-        CreateNewBike();
+        userInputManager.bike = CreateNewBike();
     }
 
-    public void CreateNewBike()
+    public Bike CreateNewBike()
     {
-        if (bike is not null)
+        if (_bike is not null)
         {
-            Destroy(bike.GameObject);
+            Destroy(_bike.GameObject);
         }
 
-        bike = bikeBuilder.Build();
-        cameraManager.toggledBody = bike.Rider.GetComponentInChildren<Rigidbody2D>();
-        userInputManager.wheelJoint = bike.BackWheel.GetComponentInChildren<WheelJoint2D>();
-        userInputManager.wheel = bike.BackWheel.GetComponentInChildren<Rigidbody2D>();
-    }
+        _bike = bikeBuilder.Build();
+        cameraManager.toggledBody = _bike.Rider.GetComponentInChildren<Rigidbody2D>();
 
-    
+        return _bike;
+    }
 }

@@ -30,6 +30,7 @@ namespace Models
         public GameObject Frame { get; }
         public GameObject FrontWheel { get; }
         public GameObject BackWheel { get; }
+        public WheelJoint2D TransmissionJoint => BackWheel.GetComponentInChildren<WheelJoint2D>();
         public GameObject Rider { get; }
         //public SpringJoint2D Hands { get; }
         public SpringJoint2D Foots { get; }

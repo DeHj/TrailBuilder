@@ -1,35 +1,40 @@
 using Configuration;
+using Models;
 using UnityEngine;
 
 public class UserInputManager : MonoBehaviour
 {
-    public WheelJoint2D wheelJoint;
-    public Rigidbody2D wheel;
     public BikeConfiguration configuration;
-    //[Tooltip()]
+    [Tooltip("Scene manager, that provides creation of controlled bike")]
     public SceneManager sceneManager;
+
+    public Bike bike;
 
     private void Update()
     {
-        HandleRightPress(Input.GetAxis("Horizontal"));
+        if (bike is not null)
+        {
+            HandleRightPress(Input.GetAxis("Horizontal"));   
+        }
 
         var inputEnter = Input.GetButtonUp("Submit");
         if (inputEnter)
         {
-            sceneManager.CreateNewBike();
+            bike = sceneManager.CreateNewBike();
+        }
     }
 
     private void HandleRightPress(float input)
     {
-        input *= configuration.transmission.speed;
         if (input < 0.001f)
         {
-            wheelJoint.useMotor = false;
+            bike.TransmissionJoint.useMotor = false;
             return;
         }
 
+        input *= configuration.transmission.speed;
         if (input > 0
-            && input > -wheel.angularVelocity)
+            && input > -bike.BackWheel.GetComponentInChildren<Rigidbody2D>().angularVelocity)
         {
             var motor = new JointMotor2D
             {
@@ -37,8 +42,8 @@ public class UserInputManager : MonoBehaviour
                 maxMotorTorque = configuration.transmission.force
             };
 
-            wheelJoint.motor = motor;
-            wheelJoint.useMotor = true;
+            bike.TransmissionJoint.motor = motor;
+            bike.TransmissionJoint.useMotor = true;
         }
     }
 }

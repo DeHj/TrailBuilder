@@ -154,7 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraManager: {fileID: 519420033}
   bikeBuilder: {fileID: 831662615}
-  userInputManager: {fileID: 1473686082}
 --- !u!4 &333145540
 Transform:
   m_ObjectHideFlags: 0
@@ -332,7 +331,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 653205804}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8f7497273d6ac04409b4c8f48e023ed9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -621,8 +620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427ec5c2d6a613546bddf1058e29426e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelJoint: {fileID: 0}
-  wheel: {fileID: 0}
   configuration: {fileID: 1144793196}
   sceneManager: {fileID: 333145539}
 --- !u!4 &1473686083
@@ -941,6 +938,10 @@ PrefabInstance:
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: transmission.speed
       value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: frontWheel.diameter
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: rider.footsFrequency
