@@ -17,7 +17,6 @@ public class UserInputManager : MonoBehaviour
         if (inputEnter)
         {
             sceneManager.CreateNewBike();
-        }v
     }
 
     private void HandleRightPress(float input)
