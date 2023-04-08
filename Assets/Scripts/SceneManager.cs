@@ -6,25 +6,24 @@ public class SceneManager : MonoBehaviour
     public CameraManager cameraManager;
     [Tooltip("Bike builder, that creates bike model")]
     public BikeBuilder bikeBuilder;
-    public UserInputManager userInputManager;
 
-    private Bike _bike;
+    public Bike bike;
 
     private void Start()
     {
-        userInputManager.bike = CreateNewBike();
+        CreateNewBike();
     }
 
     public Bike CreateNewBike()
     {
-        if (_bike is not null)
+        if (bike is not null)
         {
-            Destroy(_bike.GameObject);
+            Destroy(bike.GameObject);
         }
 
-        _bike = bikeBuilder.Build();
-        cameraManager.toggledBody = _bike.Rider.GetComponentInChildren<Rigidbody2D>();
+        bike = bikeBuilder.Build();
+        cameraManager.toggledBody = bike.Rider.GetComponentInChildren<Rigidbody2D>();
 
-        return _bike;
+        return bike;
     }
 }

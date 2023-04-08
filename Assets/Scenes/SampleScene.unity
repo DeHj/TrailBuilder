@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 333145540}
   - component: {fileID: 333145539}
   m_Layer: 0
-  m_Name: Scene Configurator
+  m_Name: Scene Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333145538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.1, y: 3.77, z: 0.4284442}
+  m_LocalPosition: {x: -6.44, y: 3.45, z: 0.4284442}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -922,6 +922,14 @@ PrefabInstance:
     - target: {fileID: 552716545988407794, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: backBrakeForce
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: frontBrakeForce
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: rider.footsLength

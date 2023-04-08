@@ -9,5 +9,8 @@ namespace Configuration
         public WheelConfiguration frontWheel;
         public TransmissionConfiguration transmission;
         public RiderConfiguration rider;
+
+        public float backBrakeForce;
+        public float frontBrakeForce;
     }
 }

@@ -1,5 +1,6 @@
 using Configuration;
 using Models;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class UserInputManager : MonoBehaviour
@@ -8,33 +9,33 @@ public class UserInputManager : MonoBehaviour
     [Tooltip("Scene manager, that provides creation of controlled bike")]
     public SceneManager sceneManager;
 
-    public Bike bike;
+    private Bike Bike => sceneManager.bike;
 
     private void Update()
     {
-        if (bike is not null)
+        if (Bike is not null)
         {
-            HandleRightPress(Input.GetAxis("Horizontal"));   
+            HandleForwardRide(Input.GetAxis("Horizontal"));
+            HandleBreaking(Input.GetAxis("Vertical"));
         }
 
-        var inputEnter = Input.GetButtonUp("Submit");
-        if (inputEnter)
+        if (Input.GetButtonUp("Submit"))
         {
-            bike = sceneManager.CreateNewBike();
+            sceneManager.CreateNewBike();
         }
     }
 
-    private void HandleRightPress(float input)
+    private void HandleForwardRide(float input)
     {
         if (input < 0.001f)
         {
-            bike.TransmissionJoint.useMotor = false;
+            Bike.TransmissionJoint.useMotor = false;
             return;
         }
 
         input *= configuration.transmission.speed;
         if (input > 0
-            && input > -bike.BackWheel.GetComponentInChildren<Rigidbody2D>().angularVelocity)
+            && input > -Bike.BackWheel.GetComponentInChildren<Rigidbody2D>().angularVelocity)
         {
             var motor = new JointMotor2D
             {
@@ -42,8 +43,26 @@ public class UserInputManager : MonoBehaviour
                 maxMotorTorque = configuration.transmission.force
             };
 
-            bike.TransmissionJoint.motor = motor;
-            bike.TransmissionJoint.useMotor = true;
+            Bike.TransmissionJoint.motor = motor;
+            Bike.TransmissionJoint.useMotor = true;
         }
+    }
+
+    private void HandleBreaking(float force)
+    {
+        force *= -1;
+        if (force > 0)
+        {
+            BreakWheel(Bike.BackWheel.GetComponentInChildren<Rigidbody2D>(), force, configuration.backBrakeForce);
+            BreakWheel(Bike.FrontWheel.GetComponentInChildren<Rigidbody2D>(), force, configuration.frontBrakeForce);   
+        }
+    }
+
+    private static void BreakWheel(Rigidbody2D wheel, float force, float breakForce)
+    {
+        var direction = math.sign(wheel.angularVelocity);
+        var abs = math.abs(wheel.angularVelocity);
+
+        wheel.angularVelocity = direction * math.max(0, abs - force * breakForce);
     }
 }
