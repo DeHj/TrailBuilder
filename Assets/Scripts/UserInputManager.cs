@@ -16,7 +16,7 @@ public class UserInputManager : MonoBehaviour
         if (Bike is not null)
         {
             HandleForwardRide(Input.GetAxis("Horizontal"));
-            HandleBreaking(Input.GetAxis("Vertical"));
+            HandleBreaking(Input.GetAxis("Breaking"));
         }
 
         if (Input.GetButtonUp("Submit"))
@@ -50,7 +50,6 @@ public class UserInputManager : MonoBehaviour
 
     private void HandleBreaking(float force)
     {
-        force *= -1;
         if (force > 0)
         {
             BreakWheel(Bike.BackWheel.GetComponentInChildren<Rigidbody2D>(), force, configuration.backBrakeForce);
