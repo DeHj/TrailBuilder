@@ -15,8 +15,9 @@ public class UserInputManager : MonoBehaviour
     {
         if (Bike is not null)
         {
-            HandleForwardRide(Input.GetAxis("Horizontal"));
+            HandleForwardRide(Input.GetAxis("Ride"));
             HandleBreaking(Input.GetAxis("Breaking"));
+            HandleFootwork(Input.GetAxis("Footwork"));
         }
 
         if (Input.GetButtonUp("Submit"))
@@ -55,6 +56,16 @@ public class UserInputManager : MonoBehaviour
             BreakWheel(Bike.BackWheel.GetComponentInChildren<Rigidbody2D>(), force, configuration.backBrakeForce);
             BreakWheel(Bike.FrontWheel.GetComponentInChildren<Rigidbody2D>(), force, configuration.frontBrakeForce);   
         }
+    }
+
+    private void HandleFootwork(float deviation)
+    {
+        Bike.Foots.distance = deviation switch
+        {
+            > math.EPSILON => configuration.rider.foots.attackLength + (configuration.rider.foots.maxLength - configuration.rider.foots.attackLength) * deviation,
+            < math.EPSILON => configuration.rider.foots.attackLength + (configuration.rider.foots.attackLength - configuration.rider.foots.minLength) * deviation,
+            _ => configuration.rider.foots.attackLength
+        };
     }
 
     private static void BreakWheel(Rigidbody2D wheel, float force, float breakForce)
