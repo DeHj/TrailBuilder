@@ -427,7 +427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653205804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.92, z: 0}
   m_LocalScale: {x: 8, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -572,7 +572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335727753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 1.59, z: 0.12114634}
+  m_LocalPosition: {x: -2.79, y: 3.3700004, z: 0.12114634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -668,14 +668,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a647c523e7e465b47bc6a454dd978757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 1000
-  segmentGradient: 11.3
-  detailingRange: 1.03
+  length: 500
+  segmentGradient: 8.5
+  detailingRange: 0.6
   dispersion: 0.04
   startPoint:
     x: 4
     y: 0
-  seed: 7888
+  seed: 66613
 --- !u!4 &1584092858
 Transform:
   m_ObjectHideFlags: 0
@@ -977,7 +977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: rider.foots.minLength
-      value: 0.6
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: rider.hands.frequency
@@ -989,7 +989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: rider.hands.minLength
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: backWheel.tireFrequency
