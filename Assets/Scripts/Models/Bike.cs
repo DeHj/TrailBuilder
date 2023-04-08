@@ -9,8 +9,7 @@ namespace Models
             GameObject frame,
             GameObject backWheel,
             GameObject frontWheel,
-            GameObject rider,
-            SpringJoint2D foots,
+            Rider rider,
             Vector3 bottomBracket,
             Vector3 steerHub,
             Vector3 bar)
@@ -20,7 +19,6 @@ namespace Models
             BackWheel = backWheel;
             FrontWheel = frontWheel;
             Rider = rider;
-            Foots = foots;
             BottomBracket = bottomBracket;
             SteerHub = steerHub;
             Bar = bar;
@@ -31,9 +29,7 @@ namespace Models
         public GameObject FrontWheel { get; }
         public GameObject BackWheel { get; }
         public WheelJoint2D TransmissionJoint => BackWheel.GetComponentInChildren<WheelJoint2D>();
-        public GameObject Rider { get; }
-        //public SpringJoint2D Hands { get; }
-        public SpringJoint2D Foots { get; }
+        public Rider Rider { get; }
         public Vector3 BackWheelPosition => BackWheel.transform.localPosition;
         public Vector3 FrontWheelPosition => FrontWheel.transform.localPosition;
         public Vector3 BottomBracket { get; }

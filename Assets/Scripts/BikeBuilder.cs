@@ -41,7 +41,7 @@ public class BikeBuilder : MonoBehaviour
         var riderObject = Instantiate(riderPrefab, bike.transform);
         riderObject.transform.localPosition = bar - new Vector3(bikeConfiguration.rider.hands.attackLength, 0, 0);
 
-        var riderModel = riderObject.GetComponent<RiderModel>();
+        var riderModel = riderObject.GetComponent<Models.Rider>();
 
         riderModel.footsJoint.connectedBody = frameRigidbody;
         riderModel.footsJoint.connectedAnchor = bottomBracket;
@@ -57,7 +57,7 @@ public class BikeBuilder : MonoBehaviour
         riderModel.handsJoint.frequency = bikeConfiguration.rider.hands.frequency;
         riderModel.handsJoint.dampingRatio = bikeConfiguration.rider.hands.dampingRatio;
 
-        return new Bike(bike, frame, backWheel, frontWheel, riderObject, riderModel.footsJoint, bottomBracket, steerHub, bar);
+        return new Bike(bike, frame, backWheel, frontWheel, riderModel, bottomBracket, steerHub, bar);
     }
 
     private void ConfigureBackWheel(GameObject backWheel)

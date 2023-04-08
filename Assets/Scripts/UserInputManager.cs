@@ -18,6 +18,7 @@ public class UserInputManager : MonoBehaviour
             HandleForwardRide(Input.GetAxis("Ride"));
             HandleBreaking(Input.GetAxis("Breaking"));
             HandleFootwork(Input.GetAxis("Footwork"));
+            HandleHandwork(Input.GetAxis("Handwork"));
         }
 
         if (Input.GetButtonUp("Submit"))
@@ -60,11 +61,21 @@ public class UserInputManager : MonoBehaviour
 
     private void HandleFootwork(float deviation)
     {
-        Bike.Foots.distance = deviation switch
+        Bike.Rider.footsJoint.distance = deviation switch
         {
             > math.EPSILON => configuration.rider.foots.attackLength + (configuration.rider.foots.maxLength - configuration.rider.foots.attackLength) * deviation,
             < math.EPSILON => configuration.rider.foots.attackLength + (configuration.rider.foots.attackLength - configuration.rider.foots.minLength) * deviation,
             _ => configuration.rider.foots.attackLength
+        };
+    }
+
+    private void HandleHandwork(float deviation)
+    {
+        Bike.Rider.handsJoint.distance = deviation switch
+        {
+            > math.EPSILON => configuration.rider.hands.attackLength + (configuration.rider.hands.maxLength - configuration.rider.hands.attackLength) * deviation,
+            < math.EPSILON => configuration.rider.hands.attackLength + (configuration.rider.hands.attackLength - configuration.rider.hands.minLength) * deviation,
+            _ => configuration.rider.hands.attackLength
         };
     }
 
