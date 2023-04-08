@@ -940,6 +940,14 @@ PrefabInstance:
       value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: rider.foots.length
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: rider.hands.length
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: transmission.force
       value: 5
       objectReference: {fileID: 0}
@@ -956,6 +964,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: rider.foots.frequency
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: rider.hands.frequency
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: backWheel.tireFrequency
       value: 1000
       objectReference: {fileID: 0}
@@ -966,6 +982,14 @@ PrefabInstance:
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: frontWheel.tireFrequency
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: rider.foots.dampingRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: rider.hands.dampingRatio
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: backWheel.tireDampingRatio

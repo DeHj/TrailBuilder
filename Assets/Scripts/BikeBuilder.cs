@@ -39,23 +39,23 @@ public class BikeBuilder : MonoBehaviour
         forwardJoint.connectedAnchor = frontWheel.transform.localPosition;
 
         var riderObject = Instantiate(riderPrefab, bike.transform);
-        riderObject.transform.localPosition = bar - new Vector3(bikeConfiguration.rider.handsLength, 0, 0);
+        riderObject.transform.localPosition = bar - new Vector3(bikeConfiguration.rider.hands.length, 0, 0);
 
         var riderModel = riderObject.GetComponent<RiderModel>();
 
         riderModel.footsJoint.connectedBody = frameRigidbody;
         riderModel.footsJoint.connectedAnchor = bottomBracket;
         riderModel.footsJoint.autoConfigureDistance = false;
-        riderModel.footsJoint.distance = bikeConfiguration.rider.footsLength;
-        riderModel.footsJoint.frequency = bikeConfiguration.rider.footsFrequency;
-        riderModel.footsJoint.dampingRatio = bikeConfiguration.rider.footsDampingRatio;
+        riderModel.footsJoint.distance = bikeConfiguration.rider.foots.length;
+        riderModel.footsJoint.frequency = bikeConfiguration.rider.foots.frequency;
+        riderModel.footsJoint.dampingRatio = bikeConfiguration.rider.foots.dampingRatio;
 
         riderModel.handsJoint.connectedBody = frameRigidbody;
         riderModel.handsJoint.connectedAnchor = bar;
         riderModel.handsJoint.autoConfigureDistance = false;
-        riderModel.handsJoint.distance = bikeConfiguration.rider.handsLength;
-        riderModel.handsJoint.frequency = bikeConfiguration.rider.footsFrequency;
-        riderModel.handsJoint.dampingRatio = bikeConfiguration.rider.footsDampingRatio;
+        riderModel.handsJoint.distance = bikeConfiguration.rider.hands.length;
+        riderModel.handsJoint.frequency = bikeConfiguration.rider.hands.frequency;
+        riderModel.handsJoint.dampingRatio = bikeConfiguration.rider.hands.dampingRatio;
 
         return new Bike(bike, frame, backWheel, frontWheel, riderObject, riderModel.footsJoint, bottomBracket, steerHub, bar);
     }
