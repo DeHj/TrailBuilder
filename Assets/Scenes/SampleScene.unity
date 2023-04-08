@@ -572,7 +572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335727753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 2.6, z: 0.12114634}
+  m_LocalPosition: {x: -0.06, y: 1.59, z: 0.12114634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -925,11 +925,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: backBrakeForce
-      value: 100000
+      value: 100000000
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: frontBrakeForce
-      value: 100000
+      value: 100000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: frame.stemLength
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: rider.footsLength
@@ -949,7 +953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: transmission.force
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: transmission.speed
@@ -965,15 +969,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: rider.foots.frequency
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: rider.foots.maxLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: rider.foots.minLength
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: rider.hands.frequency
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: rider.hands.maxLength
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: rider.hands.minLength
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: backWheel.tireFrequency
-      value: 1000
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: rider.footsDampingRatio
@@ -981,11 +1001,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: frontWheel.tireFrequency
-      value: 1000
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: rider.foots.attackLength
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: rider.foots.dampingRatio
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
+      propertyPath: rider.hands.attackLength
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: rider.hands.dampingRatio
@@ -993,11 +1021,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: backWheel.tireDampingRatio
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3336660523207084623, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: frontWheel.tireDampingRatio
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4456118388051337885, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: m_Name
