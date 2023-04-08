@@ -6,7 +6,6 @@ public class SceneManager : MonoBehaviour
     public CameraManager cameraManager;
     [Tooltip("Bike builder, that creates bike model")]
     public BikeBuilder bikeBuilder;
-    public SegmentRenderer segmentRenderer;
     public SegmentGenerator segmentGenerator;
 
     public Bike Bike { get; private set; }
@@ -20,9 +19,13 @@ public class SceneManager : MonoBehaviour
             segmentGenerator.Generate();
         }
 
-        if (segmentRenderer.enabled)
+        var segmentRenderers = FindObjectsOfType<SegmentRenderer>();
+        foreach (var segmentRenderer in segmentRenderers)
         {
-            segmentRenderer.Render();
+            if (segmentRenderer.enabled)
+            {
+                segmentRenderer.Render();       
+            }
         }
     }
 
