@@ -9,7 +9,7 @@ public class UserInputManager : MonoBehaviour
     [Tooltip("Scene manager, that provides creation of controlled bike")]
     public SceneManager sceneManager;
 
-    private Bike Bike => sceneManager.bike;
+    private Bike Bike => sceneManager.Bike;
 
     private void Update()
     {

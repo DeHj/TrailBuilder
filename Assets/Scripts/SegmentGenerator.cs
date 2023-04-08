@@ -8,6 +8,8 @@ using Random = Unity.Mathematics.Random;
 
 public class SegmentGenerator : MonoBehaviour
 {
+    public EdgeCollider2D segmentCollider;
+
     public float length;
     [Header("Angle of segment in degrees")]
     [Range(0, 75)]
@@ -24,20 +26,13 @@ public class SegmentGenerator : MonoBehaviour
 
     public uint seed;
 
-    void Start()
+    public void Generate()
     {
         var segment = GenerateSegment();
 
-        var edgeCollider = GetComponent<EdgeCollider2D>();
-        edgeCollider.points = segment
+        segmentCollider.points = segment
             .Select(point => new Vector2(point.x, point.y))
             .ToArray();
-
-        var lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.positionCount = segment.Length;
-        lineRenderer.SetPositions(segment
-            .Select(point => new Vector3(point.x, point.y, 0))
-            .ToArray());
     }
 
     private Point[] GenerateSegment()
