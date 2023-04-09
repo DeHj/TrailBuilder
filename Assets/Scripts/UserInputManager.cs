@@ -9,6 +9,8 @@ public class UserInputManager : MonoBehaviour
     [Tooltip("Scene manager, that provides creation of controlled bike")]
     public SceneManager sceneManager;
 
+    public float maxSlowDownRatio;
+
     private Bike Bike => sceneManager.Bike;
 
     private void Update()
@@ -25,6 +27,9 @@ public class UserInputManager : MonoBehaviour
         {
             sceneManager.CreateNewBike();
         }
+
+        var ratio = Input.GetAxis("Slowdown");
+        Time.timeScale = 1 + ratio * (1 / maxSlowDownRatio - 1);
     }
 
     private void HandleForwardRide(float input)

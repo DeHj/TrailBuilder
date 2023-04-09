@@ -24,7 +24,7 @@ public class SceneManager : MonoBehaviour
         {
             if (segmentRenderer.enabled)
             {
-                segmentRenderer.Render();       
+                segmentRenderer.Render();
             }
         }
     }
