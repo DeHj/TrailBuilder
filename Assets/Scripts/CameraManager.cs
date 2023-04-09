@@ -7,11 +7,31 @@ public class CameraManager : MonoBehaviour
     public float offsetX;
     public float offsetY;
 
-    // Update is called once per frame
-    void Update()
+    private Vector3 CameraPosition => toggledCamera.transform.position;
+
+    public float minSize;
+    public float maxSize;
+    public float zoomStep;
+
+    private void Update()
     {
         var position = toggledBody.position;
+        toggledCamera.transform.position = new Vector3(position.x + offsetX, position.y + offsetY, CameraPosition.z);
+    }
 
-        toggledCamera.transform.position = new Vector3(position.x + offsetX, position.y + offsetY, toggledCamera.transform.position.z);
+    public void ZoomIn()
+    {
+        if (toggledCamera.orthographicSize > minSize)
+        {
+            toggledCamera.orthographicSize /= zoomStep;
+        }
+    }
+
+    public void ZoomOut()
+    {
+        if (toggledCamera.orthographicSize < maxSize)
+        {
+            toggledCamera.orthographicSize *= zoomStep;
+        }
     }
 }

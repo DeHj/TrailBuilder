@@ -1,3 +1,4 @@
+using System.Linq;
 using Configuration;
 using Models;
 using Unity.Mathematics;
@@ -8,6 +9,7 @@ public class UserInputManager : MonoBehaviour
     public BikeConfiguration configuration;
     [Tooltip("Scene manager, that provides creation of controlled bike")]
     public SceneManager sceneManager;
+    public CameraManager cameraManager;
 
     public float maxSlowDownRatio;
 
@@ -28,8 +30,8 @@ public class UserInputManager : MonoBehaviour
             sceneManager.CreateNewBike();
         }
 
-        var ratio = Input.GetAxis("Slowdown");
-        Time.timeScale = 1 + ratio * (1 / maxSlowDownRatio - 1);
+        HandleSlowdown(Input.GetAxis("Slowdown"));
+        HandleCameraZoom();
     }
 
     private void HandleForwardRide(float input)
@@ -82,6 +84,31 @@ public class UserInputManager : MonoBehaviour
             < math.EPSILON => configuration.rider.hands.attackLength + (configuration.rider.hands.attackLength - configuration.rider.hands.minLength) * deviation,
             _ => configuration.rider.hands.attackLength
         };
+    }
+
+    private void HandleSlowdown(float ratio)
+    {
+        Time.timeScale = 1 + ratio * (1 / maxSlowDownRatio - 1);
+    }
+
+    private void HandleCameraZoom()
+    {
+        if (cameraManager is null) return;
+
+        //Debug.Log($"{string.Join(" ", Input. touches.Select())}");
+        
+        if (Input.GetButtonUp("Camera Zoom"))
+        {
+            var input = Input.GetAxis("Camera Zoom");
+            if (input > math.EPSILON)
+            {
+                cameraManager.ZoomIn();
+            }
+            else if (input < -math.EPSILON)
+            {
+                cameraManager.ZoomOut();
+            }
+        }
     }
 
     private static void BreakWheel(Rigidbody2D wheel, float force, float breakForce)
