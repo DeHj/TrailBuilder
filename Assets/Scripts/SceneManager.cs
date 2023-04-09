@@ -37,6 +37,6 @@ public class SceneManager : MonoBehaviour
         }
 
         Bike = bikeBuilder.Build();
-        cameraManager.toggledBody = Bike.Rider.GetComponentInChildren<Rigidbody2D>();
+        cameraManager.toggledBody = Bike.Rider.cameraFollowedObject;
     }
 }

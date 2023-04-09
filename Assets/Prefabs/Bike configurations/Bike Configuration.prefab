@@ -54,13 +54,28 @@ MonoBehaviour:
   backWheel:
     diameter: 0.74
     tireHeight: 0
-    tireDampingRatio: 0.7
-    tireFrequency: 20
+    tireDampingRatio: 1
+    tireFrequency: 1000000
   frontWheel:
-    diameter: 0.74
+    diameter: 0.8
     tireHeight: 0
-    tireDampingRatio: 0.7
-    tireFrequency: 20
+    tireDampingRatio: 1
+    tireFrequency: 1000000
   transmission:
-    speed: 0
-    force: 0
+    speed: 2000
+    force: 50
+  rider:
+    hands:
+      dampingRatio: 1
+      frequency: 10
+      maxLength: 0.7
+      minLength: 0.4
+      attackLength: 0.6
+    foots:
+      dampingRatio: 1
+      frequency: 4
+      maxLength: 1.1
+      minLength: 0.7
+      attackLength: 0.9
+  backBrakeForce: 100000000
+  frontBrakeForce: 100000000

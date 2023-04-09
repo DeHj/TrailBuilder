@@ -296,11 +296,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4975368039932840695, guid: d1de2962daed2134e868187175630bc1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.8975286
+      value: 14.19
       objectReference: {fileID: 0}
     - target: {fileID: 4975368039932840695, guid: d1de2962daed2134e868187175630bc1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.0831614
+      value: 1.46
       objectReference: {fileID: 0}
     - target: {fileID: 4975368039932840695, guid: d1de2962daed2134e868187175630bc1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -337,6 +337,10 @@ PrefabInstance:
     - target: {fileID: 7809236134556985683, guid: d1de2962daed2134e868187175630bc1, type: 3}
       propertyPath: m_Name
       value: Big Dirt 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7809236134556985683, guid: d1de2962daed2134e868187175630bc1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8760763492041121345, guid: d1de2962daed2134e868187175630bc1, type: 3}
       propertyPath: m_Positions.Array.data[0].x
