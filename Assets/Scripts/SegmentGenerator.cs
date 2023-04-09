@@ -26,7 +26,12 @@ public class SegmentGenerator : MonoBehaviour
 
     public uint seed;
 
-    public void Generate()
+    public void Start()
+    {
+        Generate();
+    }
+
+    private void Generate()
     {
         var segment = GenerateSegment();
 

@@ -1,4 +1,3 @@
-using System.Linq;
 using Configuration;
 using Models;
 using Unity.Mathematics;
@@ -95,8 +94,6 @@ public class UserInputManager : MonoBehaviour
     {
         if (cameraManager is null) return;
 
-        //Debug.Log($"{string.Join(" ", Input. touches.Select())}");
-        
         if (Input.GetButtonUp("Camera Zoom"))
         {
             var input = Input.GetAxis("Camera Zoom");

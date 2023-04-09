@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -5,6 +6,11 @@ public class SegmentRenderer : MonoBehaviour
 {
     public EdgeCollider2D segmentCollider;
     public LineRenderer segmentRenderer;
+
+    private void Start()
+    {
+        Render();
+    }
 
     public void Render()
     {
