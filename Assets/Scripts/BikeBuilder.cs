@@ -16,54 +16,20 @@ public class BikeBuilder : MonoBehaviour
 
     public Bike Build()
     {
-        var frame = Instantiate(framePrefab);
-        var (bottomBracket, steerHub, bar) = ConfigureFrame(frame);
-
-        var backWheel = Instantiate(wheelPrefab, frame.transform);
-        ConfigureBackWheel(backWheel);
-
-        var frontWheel = Instantiate(wheelPrefab, frame.transform);
-        ConfigureFrontWheel(frontWheel);
-
+        var (frame, bottomBracket, steerHub, bar) = CreateFrame();
         var frameRigidbody = frame.GetComponent<Rigidbody2D>();
 
-        var backJoint = backWheel.GetComponent<WheelJoint2D>();
-        backJoint.connectedBody = frameRigidbody;
-        backJoint.connectedAnchor = backWheel.transform.localPosition;
-
-        var forwardJoint = frontWheel.GetComponent<WheelJoint2D>();
-        forwardJoint.connectedBody = frameRigidbody;
-        forwardJoint.connectedAnchor = frontWheel.transform.localPosition;
-
-        var riderObject = Instantiate(riderPrefab, frame.transform);
-        riderObject.name = "Rider";
-        riderObject.transform.localPosition = bar - new Vector3(bikeConfiguration.rider.hands.attackLength, 0, 0);
-
-        var riderModel = riderObject.GetComponent<Models.Rider>();
-
-        riderModel.footsJoint.autoConfigureDistance = false;
-        riderModel.footsJoint.distance = bikeConfiguration.rider.foots.attackLength;
-        riderModel.footsJoint.frequency = bikeConfiguration.rider.foots.frequency;
-        riderModel.footsJoint.dampingRatio = bikeConfiguration.rider.foots.dampingRatio;
-
-        riderModel.footsConnectionJoint.autoConfigureConnectedAnchor = false;
-        riderModel.footsConnectionJoint.connectedBody = frameRigidbody;
-        riderModel.footsConnectionJoint.connectedAnchor = bottomBracket;
-
-        riderModel.handsJoint.autoConfigureDistance = false;
-        riderModel.handsJoint.distance = bikeConfiguration.rider.hands.attackLength;
-        riderModel.handsJoint.frequency = bikeConfiguration.rider.hands.frequency;
-        riderModel.handsJoint.dampingRatio = bikeConfiguration.rider.hands.dampingRatio;
-
-        riderModel.handsConnectionJoint.autoConfigureConnectedAnchor = false;
-        riderModel.handsConnectionJoint.connectedBody = frameRigidbody;
-        riderModel.handsConnectionJoint.connectedAnchor = bar;
+        var backWheel = CreateBackWheel(frameRigidbody);
+        var frontWheel = CreateFrontWheel(frameRigidbody);
+        var riderModel = CreateRider(frameRigidbody, bar, bottomBracket);
 
         return new Bike(frame, frame, backWheel, frontWheel, riderModel, bottomBracket, steerHub, bar);
     }
 
-    private void ConfigureBackWheel(GameObject backWheel)
+    private GameObject CreateBackWheel(Rigidbody2D connectedFrame)
     {
+        var backWheel = Instantiate(wheelPrefab, connectedFrame.transform);
+
         backWheel.transform.localPosition = Vector3.zero;
         backWheel.transform.rotation = Quaternion.identity;
         backWheel.name = "Back Wheel";
@@ -77,10 +43,18 @@ public class BikeBuilder : MonoBehaviour
             dampingRatio = bikeConfiguration.backWheel.tireDampingRatio
         };
         joint.suspension = suspension;
+
+        var backJoint = backWheel.GetComponent<WheelJoint2D>();
+        backJoint.connectedBody = connectedFrame;
+        backJoint.connectedAnchor = backWheel.transform.localPosition;
+
+        return backWheel;
     }
 
-    private void ConfigureFrontWheel(GameObject frontWheel)
+    private GameObject CreateFrontWheel(Rigidbody2D connectedFrame)
     {
+        var frontWheel = Instantiate(wheelPrefab, connectedFrame.transform);
+
         frontWheel.transform.localPosition = new Vector3(bikeConfiguration.frame.wheelBase, 0);
         frontWheel.transform.rotation = Quaternion.identity;
         frontWheel.name = "Front Wheel";
@@ -94,10 +68,18 @@ public class BikeBuilder : MonoBehaviour
             dampingRatio = bikeConfiguration.frontWheel.tireDampingRatio
         };
         joint.suspension = suspension;
+
+        var forwardJoint = frontWheel.GetComponent<WheelJoint2D>();
+        forwardJoint.connectedBody = connectedFrame;
+        forwardJoint.connectedAnchor = frontWheel.transform.localPosition;
+
+        return frontWheel;
     }
 
-    private (Vector3 bottomBracket, Vector3 steerHub, Vector3 bar) ConfigureFrame(GameObject frame)
+    private (GameObject frame, Vector3 bottomBracket, Vector3 steerHub, Vector3 bar) CreateFrame()
     {
+        var frame = Instantiate(framePrefab);
+
         frame.transform.position = spawnPosition.transform.position;
         frame.transform.rotation = Quaternion.identity;
         frame.name = "Frame";
@@ -133,6 +115,35 @@ public class BikeBuilder : MonoBehaviour
             .Select(point => new Vector3(point.x, point.y, 0))
             .ToArray());
 
-        return (bottomBracket, steerHub, bar);
+        return (frame, bottomBracket, steerHub, bar);
+    }
+
+    private Models.Rider CreateRider(Rigidbody2D connectedFrame, Vector3 bar, Vector3 bottomBracket)
+    {
+        var riderObject = Instantiate(riderPrefab, connectedFrame.transform);
+        riderObject.name = "Rider";
+        riderObject.transform.localPosition = bar - new Vector3(bikeConfiguration.rider.hands.attackLength, 0, 0);
+
+        var riderModel = riderObject.GetComponent<Models.Rider>();
+
+        riderModel.footsJoint.autoConfigureDistance = false;
+        riderModel.footsJoint.distance = bikeConfiguration.rider.foots.attackLength;
+        riderModel.footsJoint.frequency = bikeConfiguration.rider.foots.frequency;
+        riderModel.footsJoint.dampingRatio = bikeConfiguration.rider.foots.dampingRatio;
+
+        riderModel.footsConnectionJoint.autoConfigureConnectedAnchor = false;
+        riderModel.footsConnectionJoint.connectedBody = connectedFrame;
+        riderModel.footsConnectionJoint.connectedAnchor = bottomBracket;
+
+        riderModel.handsJoint.autoConfigureDistance = false;
+        riderModel.handsJoint.distance = bikeConfiguration.rider.hands.attackLength;
+        riderModel.handsJoint.frequency = bikeConfiguration.rider.hands.frequency;
+        riderModel.handsJoint.dampingRatio = bikeConfiguration.rider.hands.dampingRatio;
+
+        riderModel.handsConnectionJoint.autoConfigureConnectedAnchor = false;
+        riderModel.handsConnectionJoint.connectedBody = connectedFrame;
+        riderModel.handsConnectionJoint.connectedAnchor = bar;
+
+        return riderModel;
     }
 }
