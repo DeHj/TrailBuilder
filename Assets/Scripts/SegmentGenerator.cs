@@ -28,7 +28,10 @@ public class SegmentGenerator : MonoBehaviour
 
     public void Start()
     {
+        // TODO: split collider generation and renderer logic
         Generate();
+        var segmentRenderer = GetComponent<SegmentRenderer>();
+        segmentRenderer.Render();
     }
 
     private void Generate()

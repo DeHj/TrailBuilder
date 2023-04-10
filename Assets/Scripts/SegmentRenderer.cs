@@ -7,11 +7,6 @@ public class SegmentRenderer : MonoBehaviour
     public EdgeCollider2D segmentCollider;
     public LineRenderer segmentRenderer;
 
-    private void Start()
-    {
-        Render();
-    }
-
     public void Render()
     {
         segmentRenderer.positionCount = segmentCollider.points.Length;
