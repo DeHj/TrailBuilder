@@ -1,8 +1,9 @@
+using Interfaces;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public Rigidbody2D toggledBody;
+    private ICameraTraceable ToggledBody { get; set; }
     public Camera toggledCamera;
     public float offsetX;
     public float offsetY;
@@ -15,8 +16,13 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        var position = toggledBody.position;
+        var position = ToggledBody.GetPosition();
         toggledCamera.transform.position = new Vector3(position.x + offsetX, position.y + offsetY, CameraPosition.z);
+    }
+
+    public void SetToggledObject(ICameraTraceable toggledBody)
+    {
+        ToggledBody = toggledBody;
     }
 
     public void ZoomIn()

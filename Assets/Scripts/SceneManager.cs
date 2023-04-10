@@ -22,6 +22,6 @@ public class SceneManager : MonoBehaviour
         }
 
         Bike = bikeBuilder.Build();
-        cameraManager.toggledBody = Bike.Rider.cameraFollowedObject;
+        cameraManager.SetToggledObject(Bike.Rider);
     }
 }
