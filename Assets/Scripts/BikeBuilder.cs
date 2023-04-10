@@ -16,29 +16,26 @@ public class BikeBuilder : MonoBehaviour
 
     public Bike Build()
     {
-        var bike = new GameObject("Bike");
-        bike.transform.position = spawnPosition.transform.position;
-
-        var frame = Instantiate(framePrefab, bike.transform);
+        var frame = Instantiate(framePrefab);
         var (bottomBracket, steerHub, bar) = ConfigureFrame(frame);
-        
-        var backWheel = Instantiate(wheelPrefab, bike.transform);
+
+        var backWheel = Instantiate(wheelPrefab, frame.transform);
         ConfigureBackWheel(backWheel);
 
-        var frontWheel = Instantiate(wheelPrefab, bike.transform);
+        var frontWheel = Instantiate(wheelPrefab, frame.transform);
         ConfigureFrontWheel(frontWheel);
 
-        var frameRigidbody = frame.GetComponentInChildren<Rigidbody2D>();
+        var frameRigidbody = frame.GetComponent<Rigidbody2D>();
 
-        var backJoint = backWheel.GetComponentInChildren<WheelJoint2D>();
+        var backJoint = backWheel.GetComponent<WheelJoint2D>();
         backJoint.connectedBody = frameRigidbody;
         backJoint.connectedAnchor = backWheel.transform.localPosition;
 
-        var forwardJoint = frontWheel.GetComponentInChildren<WheelJoint2D>();
+        var forwardJoint = frontWheel.GetComponent<WheelJoint2D>();
         forwardJoint.connectedBody = frameRigidbody;
         forwardJoint.connectedAnchor = frontWheel.transform.localPosition;
 
-        var riderObject = Instantiate(riderPrefab, bike.transform);
+        var riderObject = Instantiate(riderPrefab, frame.transform);
         riderObject.name = "Rider";
         riderObject.transform.localPosition = bar - new Vector3(bikeConfiguration.rider.hands.attackLength, 0, 0);
 
@@ -62,7 +59,7 @@ public class BikeBuilder : MonoBehaviour
         riderModel.handsConnectionJoint.connectedBody = frameRigidbody;
         riderModel.handsConnectionJoint.connectedAnchor = bar;
 
-        return new Bike(bike, frame, backWheel, frontWheel, riderModel, bottomBracket, steerHub, bar);
+        return new Bike(frame, frame, backWheel, frontWheel, riderModel, bottomBracket, steerHub, bar);
     }
 
     private void ConfigureBackWheel(GameObject backWheel)
@@ -70,10 +67,10 @@ public class BikeBuilder : MonoBehaviour
         backWheel.transform.localPosition = Vector3.zero;
         backWheel.transform.rotation = Quaternion.identity;
         backWheel.name = "Back Wheel";
-        var wheelCollider = backWheel.GetComponentInChildren<CircleCollider2D>();
+        var wheelCollider = backWheel.GetComponent<CircleCollider2D>();
         backWheel.transform.localScale *= bikeConfiguration.backWheel.diameter / wheelCollider.radius / 2;
 
-        var joint = backWheel.GetComponentInChildren<WheelJoint2D>();
+        var joint = backWheel.GetComponent<WheelJoint2D>();
         var suspension = new JointSuspension2D
         {
             frequency = bikeConfiguration.backWheel.tireFrequency,
@@ -87,10 +84,10 @@ public class BikeBuilder : MonoBehaviour
         frontWheel.transform.localPosition = new Vector3(bikeConfiguration.frame.wheelBase, 0);
         frontWheel.transform.rotation = Quaternion.identity;
         frontWheel.name = "Front Wheel";
-        var wheelCollider = frontWheel.GetComponentInChildren<CircleCollider2D>();
+        var wheelCollider = frontWheel.GetComponent<CircleCollider2D>();
         frontWheel.transform.localScale *= bikeConfiguration.frontWheel.diameter / wheelCollider.radius / 2;
 
-        var joint = frontWheel.GetComponentInChildren<WheelJoint2D>();
+        var joint = frontWheel.GetComponent<WheelJoint2D>();
         var suspension = new JointSuspension2D
         {
             frequency = bikeConfiguration.frontWheel.tireFrequency,
@@ -101,22 +98,22 @@ public class BikeBuilder : MonoBehaviour
 
     private (Vector3 bottomBracket, Vector3 steerHub, Vector3 bar) ConfigureFrame(GameObject frame)
     {
-        frame.transform.localPosition = Vector3.zero;
+        frame.transform.position = spawnPosition.transform.position;
         frame.transform.rotation = Quaternion.identity;
         frame.name = "Frame";
 
-        var frameCollider = frame.GetComponentInChildren<PolygonCollider2D>();
+        var frameCollider = frame.GetComponent<PolygonCollider2D>();
 
         var configuration = bikeConfiguration.frame;
 
         var frontWheel = new Vector2(configuration.wheelBase, 0);
         var bottomBracket = new Vector2(configuration.chainStay, -configuration.bottomBracketDrop);
-        var steerHub = new Vector2(
-            frontWheel.x - configuration.forkLength * math.cos(configuration.headAngle * Mathf.Deg2Rad),
-            frontWheel.y + configuration.forkLength * math.sin(configuration.headAngle * Mathf.Deg2Rad));
-        var bar = new Vector2(
-            steerHub.x + configuration.stemLength * math.sin(configuration.headAngle * Mathf.Deg2Rad),
-            steerHub.y + configuration.stemLength * math.cos(configuration.headAngle * Mathf.Deg2Rad));
+        var steerHub = frontWheel + new Vector2(
+            -configuration.forkLength * math.cos(configuration.headAngle * Mathf.Deg2Rad),
+            configuration.forkLength * math.sin(configuration.headAngle * Mathf.Deg2Rad));
+        var bar = steerHub + new Vector2(
+            configuration.stemLength * math.sin(configuration.headAngle * Mathf.Deg2Rad),
+            configuration.stemLength * math.cos(configuration.headAngle * Mathf.Deg2Rad));
 
         frameCollider.points = new[]
         {
@@ -129,7 +126,7 @@ public class BikeBuilder : MonoBehaviour
             bottomBracket
         };
 
-        var lineRenderer = frame.GetComponentInChildren<LineRenderer>();
+        var lineRenderer = frame.GetComponent<LineRenderer>();
         lineRenderer.positionCount = frameCollider.points.Length;
         lineRenderer.loop = true;
         lineRenderer.SetPositions(frameCollider.points
