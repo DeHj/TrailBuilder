@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Interfaces
 {
-    public interface IRider : ICameraTraceable
+    public interface IRider : IDestroyable, ICameraTraceable
     {
         // todo: figure out what is anchorPosition
         void ConnectHands(Rigidbody2D connectedBody, Vector2 anchorPosition);
