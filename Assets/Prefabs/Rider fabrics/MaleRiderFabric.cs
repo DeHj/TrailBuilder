@@ -45,14 +45,14 @@ namespace Prefabs.RiderFabrics
 
         public void ConnectHands(Rigidbody2D connectedBody, Vector2 anchorPosition)
         {
-            _footsConnection.connectedBody = connectedBody;
-            _footsConnection.connectedAnchor = anchorPosition;
+            _handsConnection.connectedBody = connectedBody;
+            _handsConnection.connectedAnchor = anchorPosition;
         }
 
         public void ConnectFoots(Rigidbody2D connectedBody, Vector2 anchorPosition)
         {
-            _handsConnection.connectedBody = connectedBody;
-            _handsConnection.connectedAnchor = anchorPosition;
+            _footsConnection.connectedBody = connectedBody;
+            _footsConnection.connectedAnchor = anchorPosition;
         }
     }
 }
