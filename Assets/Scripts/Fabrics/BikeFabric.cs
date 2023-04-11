@@ -1,9 +1,9 @@
 ﻿using Interfaces;
 using UnityEngine;
 
-namespace Fabrics.BikeFabrics
+namespace Fabrics
 {
-    public abstract class BikeFabric : MonoBehaviour, IBikeFabric
+    public abstract class BikeFabric : MonoBehaviour
     {
         public abstract IBike BuildBike();
     }

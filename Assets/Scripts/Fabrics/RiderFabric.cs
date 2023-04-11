@@ -1,9 +1,9 @@
 ﻿using Interfaces;
 using UnityEngine;
 
-namespace Fabrics.RiderFabrics
+namespace Fabrics
 {
-    public abstract class RiderFabric : MonoBehaviour, IRiderFabric
+    public abstract class RiderFabric : MonoBehaviour
     {
         public abstract IRider BuildRider();
     }
