@@ -1,4 +1,5 @@
 using Fabrics;
+using Interfaces;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
@@ -9,17 +10,36 @@ public class SceneManager : MonoBehaviour
     [Tooltip("Rider fabric, that creates rider model")]
     public RiderFabric riderFabric;
 
+    private IBike _bike; 
+    private IRider _rider; 
+
     private void Start()
     {
-        var bike = bikeFabric.BuildBike();
-        var rider = riderFabric.BuildRider();
+        BuildBikeAndRider();
+    }
 
-        var pedalsConnection = bike.GetConnectionWithPedals();
-        rider.ConnectFoots(pedalsConnection.connectedBody, pedalsConnection.anchorPosition);
+    private void Update()
+    {
+        if (Input.GetButtonUp("Submit"))
+        {
+            _bike?.Destroy();
+            _rider?.Destroy();
 
-        var barConnection = bike.GetConnectionWithBar();
-        rider.ConnectHands(barConnection.connectedBody, barConnection.anchorPosition);
+            BuildBikeAndRider();
+        }
+    }
 
-        cameraManager.SetToggledObject(rider);
+    private void BuildBikeAndRider()
+    {
+        _bike = bikeFabric.BuildBike();
+        _rider = riderFabric.BuildRider();
+
+        var pedalsConnection = _bike.GetConnectionWithPedals();
+        _rider.ConnectFoots(pedalsConnection.connectedBody, pedalsConnection.anchorPosition);
+
+        var barConnection = _bike.GetConnectionWithBar();
+        _rider.ConnectHands(barConnection.connectedBody, barConnection.anchorPosition);
+
+        cameraManager.SetToggledObject(_rider);
     }
 }
