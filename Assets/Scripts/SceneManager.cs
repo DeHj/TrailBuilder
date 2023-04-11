@@ -10,8 +10,10 @@ public class SceneManager : MonoBehaviour
     [Tooltip("Rider fabric, that creates rider model")]
     public RiderFabric riderFabric;
 
-    private IBike _bike; 
-    private IRider _rider; 
+    private IBike _bike;
+    private IRider _rider;
+
+    public Transform spawnPosition;
 
     private void Start()
     {
