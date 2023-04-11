@@ -155,6 +155,7 @@ MonoBehaviour:
   cameraManager: {fileID: 519420033}
   bikeFabric: {fileID: 698319674319296579, guid: f021d634a2ea30d4b89eb7251d839b35, type: 3}
   riderFabric: {fileID: -5426863455946847644, guid: 398be6d934de29f4d9ff73b2d67be270, type: 3}
+  spawnPosition: {fileID: 1335727755}
 --- !u!4 &333145540
 Transform:
   m_ObjectHideFlags: 0
@@ -915,11 +916,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4975368039932840695, guid: d1de2962daed2134e868187175630bc1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.64
+      value: -2.63
       objectReference: {fileID: 0}
     - target: {fileID: 4975368039932840695, guid: d1de2962daed2134e868187175630bc1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.89
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 4975368039932840695, guid: d1de2962daed2134e868187175630bc1, type: 3}
       propertyPath: m_LocalPosition.z

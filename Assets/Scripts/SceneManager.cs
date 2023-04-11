@@ -36,6 +36,9 @@ public class SceneManager : MonoBehaviour
         _bike = bikeFabric.BuildBike();
         _rider = riderFabric.BuildRider();
 
+        _bike.Transform.position = spawnPosition.position;
+        _rider.Transform.position = spawnPosition.position + new Vector3(0.5f, 1.0f);
+
         var pedalsConnection = _bike.GetConnectionWithPedals();
         _rider.ConnectFoots(pedalsConnection.connectedBody, pedalsConnection.anchorPosition);
 

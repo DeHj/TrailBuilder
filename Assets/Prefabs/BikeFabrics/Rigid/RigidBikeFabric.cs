@@ -35,7 +35,7 @@ namespace Prefabs.BikeFabrics.Rigid
             var frameCollider = frame.GetComponent<PolygonCollider2D>();
 
             var frameConfiguration = configuration.frame;
-            
+
             var frontWheel = new Vector2(frameConfiguration.wheelBase, 0);
             var bottomBracket = new Vector2(frameConfiguration.chainStay, -frameConfiguration.bottomBracketDrop);
             var steerHub = frontWheel + new Vector2(
@@ -130,12 +130,16 @@ namespace Prefabs.BikeFabrics.Rigid
             _frameRigidbody = frameRigidbody;
             _barPosition = barPosition;
             _pedalsPosition = pedalsPosition;
+
+            Transform = frameObject.transform;
         }
 
         public void Destroy()
         {
             Object.Destroy(_frameObject);
         }
+
+        public Transform Transform { get; }
 
         public (Rigidbody2D connectedBody, Vector2 anchorPosition) GetConnectionWithBar()
         {

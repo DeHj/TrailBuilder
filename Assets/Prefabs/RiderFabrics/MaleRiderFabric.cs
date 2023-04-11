@@ -31,12 +31,16 @@ namespace Prefabs.RiderFabrics
             _gameObject = gameObject;
             _footsConnection = footsConnection;
             _handsConnection = handsConnection;
+
+            Transform = gameObject.transform;
         }
 
         public void Destroy()
         {
             Object.Destroy(_gameObject);
         }
+
+        public Transform Transform { get; }
 
         public Vector2 GetPosition()
         {
