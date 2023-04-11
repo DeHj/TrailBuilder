@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6426517956058418742}
   - component: {fileID: 7204858082484945809}
   - component: {fileID: 5641907999165569879}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Male Rider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

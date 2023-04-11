@@ -3,7 +3,7 @@ using Interfaces;
 using Prefabs.Riders;
 using UnityEngine;
 
-namespace Prefabs.RiderFabrics
+namespace Prefabs.Rider_fabrics
 {
     public class MaleRiderFabric : RiderFabric
     {
