@@ -1,27 +1,25 @@
-using Models;
+using Fabrics;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
     public CameraManager cameraManager;
-    [Tooltip("Bike builder, that creates bike model")]
-    public BikeBuilder bikeBuilder;
-
-    public Bike Bike { get; private set; }
+    [Tooltip("Bike fabric, that creates bike model")]
+    public BikeFabric bikeFabric;
+    [Tooltip("Rider fabric, that creates rider model")]
+    public RiderFabric riderFabric;
 
     private void Start()
     {
-        CreateNewBike();
-    }
+        var bike = bikeFabric.BuildBike();
+        var rider = riderFabric.BuildRider();
 
-    public void CreateNewBike()
-    {
-        if (Bike is not null)
-        {
-            Destroy(Bike.GameObject);
-        }
+        var pedalsConnection = bike.GetConnectionWithPedals();
+        rider.ConnectFoots(pedalsConnection.connectedBody, pedalsConnection.anchorPosition);
 
-        Bike = bikeBuilder.Build();
-        cameraManager.SetToggledObject(Bike.Rider);
+        var barConnection = bike.GetConnectionWithBar();
+        rider.ConnectHands(barConnection.connectedBody, barConnection.anchorPosition);
+
+        cameraManager.SetToggledObject(rider);
     }
 }
