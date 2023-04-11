@@ -5,7 +5,7 @@ using Interfaces;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace Prefabs.Bike_fabrics.Rigid
+namespace Prefabs.BikeFabrics.Rigid
 {
     public class RigidBikeFabric : BikeFabric
     {
