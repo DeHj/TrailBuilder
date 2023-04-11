@@ -5,10 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof (Camera))]
 public class CameraManager : MonoBehaviour
 {
-    private ICameraTraceable ToggledBody { get; set; }
     public float offsetX;
     public float offsetY;
 
+    public float minSize;
+    public float maxSize;
+    public float zoomStep;
+
+    private ICameraTraceable ToggledBody { get; set; }
     private Camera _toggledCamera;
 
     private Vector3 CameraPosition
@@ -17,10 +21,6 @@ public class CameraManager : MonoBehaviour
         set => _toggledCamera.transform.position = value;
     }
 
-    public float minSize;
-    public float maxSize;
-    public float zoomStep;
-
     private void Start()
     {
         _toggledCamera = GetComponent<Camera>();
@@ -28,7 +28,10 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        CameraPosition = (Vector3)ToggledBody.GetPosition() + new Vector3(offsetX, offsetY, CameraPosition.z);
+        if (ToggledBody is not null)
+        {
+            CameraPosition = (Vector3)ToggledBody.GetPosition() + new Vector3(offsetX, offsetY, CameraPosition.z);
+        }
 
         HandleZoom();
     }
