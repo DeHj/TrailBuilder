@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraManager: {fileID: 519420033}
   bikeFabric: {fileID: 0}
-  riderFabric: {fileID: 0}
+  riderFabric: {fileID: -5426863455946847644, guid: 398be6d934de29f4d9ff73b2d67be270, type: 3}
 --- !u!4 &333145540
 Transform:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333145538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.44, y: 3.45, z: 0.4284442}
+  m_LocalPosition: {x: 0, y: 0, z: 0.4284442}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
