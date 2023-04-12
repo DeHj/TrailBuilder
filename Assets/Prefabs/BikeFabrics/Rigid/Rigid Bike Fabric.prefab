@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d7fe4d2d92daf40914f6749f2d1e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  framePrefab: {fileID: 7556885650765052946, guid: 0695aa3f30d17e34a9d53b8bd520b611, type: 3}
+  framePrefab: {fileID: 7556885650765052946, guid: 82ad770d33f0ad44a88c148f39411d96, type: 3}
   backWheelPrefab: {fileID: 373504515862887564, guid: 5a3c6cc12b542e9408d77caa22ec3d23, type: 3}
   frontWheelPrefab: {fileID: 373504515862887564, guid: a692f7b202a24324db3c347ce7d22373, type: 3}
   configuration: {fileID: 5997809085638237057, guid: 2469cfeb5a553cd4cb25c0e6b47091b8, type: 3}
