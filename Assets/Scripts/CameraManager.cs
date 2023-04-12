@@ -12,6 +12,8 @@ public class CameraManager : MonoBehaviour
     public float maxSize;
     public float zoomStep;
 
+    public float speed;
+
     private ICameraTraceable ToggledBody { get; set; }
     private Camera _toggledCamera;
 
@@ -30,7 +32,7 @@ public class CameraManager : MonoBehaviour
     {
         if (ToggledBody is not null)
         {
-            CameraPosition = (Vector3)ToggledBody.GetPosition() + new Vector3(offsetX, offsetY, CameraPosition.z);
+            CameraPosition += ((Vector3)ToggledBody.GetPosition() + new Vector3(offsetX, offsetY, CameraPosition.z) - CameraPosition) * speed;
         }
 
         HandleZoom();
