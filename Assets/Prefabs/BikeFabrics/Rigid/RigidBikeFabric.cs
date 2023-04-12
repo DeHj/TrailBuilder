@@ -39,21 +39,24 @@ namespace Prefabs.BikeFabrics.Rigid
 
             var frontWheel = new Vector2(frameConfiguration.wheelBase, 0);
             var bottomBracket = new Vector2(frameConfiguration.chainStay, -frameConfiguration.bottomBracketDrop);
-            var steerHub = frontWheel + new Vector2(
+            var headTubeDown = frontWheel + new Vector2(
                 -frameConfiguration.forkLength * math.cos(frameConfiguration.headAngle * Mathf.Deg2Rad),
                 frameConfiguration.forkLength * math.sin(frameConfiguration.headAngle * Mathf.Deg2Rad));
-            var bar = steerHub + new Vector2(
+            var headTubeUp = headTubeDown + new Vector2(
+                -frameConfiguration.headTubeLength * math.cos(frameConfiguration.headAngle * Mathf.Deg2Rad),
+                frameConfiguration.headTubeLength * math.sin(frameConfiguration.headAngle * Mathf.Deg2Rad));
+            var bar = headTubeUp + new Vector2(
                 frameConfiguration.stemLength * math.sin(frameConfiguration.headAngle * Mathf.Deg2Rad),
                 frameConfiguration.stemLength * math.cos(frameConfiguration.headAngle * Mathf.Deg2Rad));
 
             frameCollider.points = new[]
             {
                 Vector2.zero,
-                steerHub,
+                headTubeUp,
                 bar,
-                steerHub,
+                headTubeUp,
                 frontWheel,
-                steerHub,
+                headTubeDown,
                 bottomBracket
             };
 
@@ -64,7 +67,7 @@ namespace Prefabs.BikeFabrics.Rigid
                 .Select(point => new Vector3(point.x, point.y, 0))
                 .ToArray());
 
-            return (frame, bottomBracket, steerHub, bar);
+            return (frame, bottomBracket, headTubeDown, bar);
         }
 
         private GameObject CreateBackWheel(Rigidbody2D connectedFrame)
