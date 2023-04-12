@@ -11,5 +11,7 @@ namespace Configuration
         public float dampingRatio;
         public float frequency;
         public float springLength;
+
+        public float LowerLength => length - travel;
     }
 }
