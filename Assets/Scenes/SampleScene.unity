@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraManager: {fileID: 519420033}
-  bikeFabric: {fileID: 698319674319296579, guid: f021d634a2ea30d4b89eb7251d839b35, type: 3}
+  bikeFabric: {fileID: 2784091363197746106, guid: ff60f235324b7254083459431c1165df, type: 3}
   riderFabric: {fileID: -5426863455946847644, guid: 398be6d934de29f4d9ff73b2d67be270, type: 3}
   spawnPosition: {fileID: 1335727755}
 --- !u!4 &333145540
@@ -306,7 +306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.15, y: -7.73, z: -10}
+  m_LocalPosition: {x: 19.75, y: -4.68, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -916,11 +916,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4975368039932840695, guid: d1de2962daed2134e868187175630bc1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.63
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4975368039932840695, guid: d1de2962daed2134e868187175630bc1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4975368039932840695, guid: d1de2962daed2134e868187175630bc1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1005,7 +1005,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 552716545988407794, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 552716545988407794, guid: 030cd16b9146e634799d5783fc67e93e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1128,9 +1128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segmentCollider: {fileID: 925725898}
   length: 1000
-  segmentGradient: 10.4
-  detailingRange: 1.16
-  dispersion: 0.053
+  segmentGradient: 3.4
+  detailingRange: 4.57
+  dispersion: 0.0091
   startPoint:
     x: 0
     y: 0
@@ -1213,7 +1213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335727753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.22, y: -6.55, z: 0}
+  m_LocalPosition: {x: 2, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1307,5 +1307,5 @@ Transform:
   m_Children:
   - {fileID: 925725895}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
