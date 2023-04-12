@@ -13,8 +13,10 @@ GameObject:
   - component: {fileID: 2184233834171397660}
   - component: {fileID: 3438218882135858513}
   - component: {fileID: 949620840386782461}
+  - component: {fileID: 1439348307365671218}
+  - component: {fileID: 761818206633705118}
   m_Layer: 6
-  m_Name: Wheel
+  m_Name: Back Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,10 +169,39 @@ WheelJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
-    m_DampingRatio: 0.7
-    m_Frequency: 2
+    m_DampingRatio: 1
+    m_Frequency: 100000
     m_Angle: 90
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
+--- !u!114 &1439348307365671218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373504515862887564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc43c4838d7525e42b7aa519d2f4bc53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2000
+  force: 40
+  axis: Ride
+--- !u!114 &761818206633705118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373504515862887564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda7b784652d3ab4b9c28895ed936311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 10000000
+  axis: Braking

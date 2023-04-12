@@ -10,7 +10,8 @@ namespace Prefabs.BikeFabrics.Rigid
     public class RigidBikeFabric : BikeFabric
     {
         public GameObject framePrefab;
-        public GameObject wheelPrefab;
+        public GameObject backWheelPrefab;
+        public GameObject frontWheelPrefab;
 
         public BikeConfiguration configuration;
 
@@ -68,7 +69,7 @@ namespace Prefabs.BikeFabrics.Rigid
 
         private GameObject CreateBackWheel(Rigidbody2D connectedFrame)
         {
-            var backWheel = Instantiate(wheelPrefab, connectedFrame.transform);
+            var backWheel = Instantiate(backWheelPrefab, connectedFrame.transform);
 
             backWheel.transform.localPosition = Vector3.zero;
             backWheel.transform.rotation = Quaternion.identity;
@@ -93,7 +94,7 @@ namespace Prefabs.BikeFabrics.Rigid
 
         private GameObject CreateFrontWheel(Rigidbody2D connectedFrame)
         {
-            var frontWheel = Instantiate(wheelPrefab, connectedFrame.transform);
+            var frontWheel = Instantiate(frontWheelPrefab, connectedFrame.transform);
 
             frontWheel.transform.localPosition = new Vector3(configuration.frame.wheelBase, 0);
             frontWheel.transform.rotation = Quaternion.identity;

@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &698319674319296579
 MonoBehaviour:
@@ -45,5 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   framePrefab: {fileID: 7556885650765052946, guid: 0695aa3f30d17e34a9d53b8bd520b611, type: 3}
-  wheelPrefab: {fileID: 373504515862887564, guid: 5a3c6cc12b542e9408d77caa22ec3d23, type: 3}
+  backWheelPrefab: {fileID: 373504515862887564, guid: 5a3c6cc12b542e9408d77caa22ec3d23, type: 3}
+  frontWheelPrefab: {fileID: 373504515862887564, guid: a692f7b202a24324db3c347ce7d22373, type: 3}
   configuration: {fileID: 5997809085638237057, guid: 2469cfeb5a553cd4cb25c0e6b47091b8, type: 3}

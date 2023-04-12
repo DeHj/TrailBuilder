@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 5959008590560469504}
   - component: {fileID: 8204206787826944482}
   - component: {fileID: 6291854435632374272}
+  - component: {fileID: 4700026670379580541}
   m_Layer: 9
   m_Name: Forearm
   m_TagString: Untagged
@@ -430,7 +431,7 @@ SpringJoint2D:
   m_Anchor: {x: 0.50000024, y: -0.49999988}
   m_ConnectedAnchor: {x: 0.4999998, y: 0.5}
   m_AutoConfigureDistance: 0
-  m_Distance: 0.55676705
+  m_Distance: 0.6681205
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &6291854435632374272
@@ -446,6 +447,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connection: {fileID: 5959008590560469504}
+--- !u!114 &4700026670379580541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4182888035597639317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e086279d8f6e34c962f74d56377aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dampingRatio: 1
+  frequency: 5
+  maxLength: 0.7
+  attackLength: 0.6
+  minLength: 0.3
+  axis: Handwork
 --- !u!1 &7625751360585814230
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +480,7 @@ GameObject:
   - component: {fileID: 4535592651582309871}
   - component: {fileID: 5671124785911448421}
   - component: {fileID: 8822995271064102305}
+  - component: {fileID: 4126918617584815798}
   m_Layer: 9
   m_Name: Leg
   m_TagString: Untagged
@@ -650,7 +670,7 @@ SpringJoint2D:
   m_Anchor: {x: -0.49999997, y: -0.49999988}
   m_ConnectedAnchor: {x: -0.5, y: 0.49999994}
   m_AutoConfigureDistance: 0
-  m_Distance: 0.7036947
+  m_Distance: 0.84443367
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &8822995271064102305
@@ -666,6 +686,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connection: {fileID: 4535592651582309871}
+--- !u!114 &4126918617584815798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7625751360585814230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e086279d8f6e34c962f74d56377aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dampingRatio: 1
+  frequency: 10
+  maxLength: 0.9
+  attackLength: 0.8
+  minLength: 0.5
+  axis: Footwork
 --- !u!1 &7756245443710709947
 GameObject:
   m_ObjectHideFlags: 0

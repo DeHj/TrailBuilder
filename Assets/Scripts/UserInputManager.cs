@@ -47,26 +47,6 @@ public class UserInputManager : MonoBehaviour
         }
     }
 
-    private void HandleFootwork(float deviation)
-    {
-        Bike.Rider.footsJoint.distance = deviation switch
-        {
-            > math.EPSILON => configuration.rider.foots.attackLength + (configuration.rider.foots.maxLength - configuration.rider.foots.attackLength) * deviation,
-            < math.EPSILON => configuration.rider.foots.attackLength + (configuration.rider.foots.attackLength - configuration.rider.foots.minLength) * deviation,
-            _ => configuration.rider.foots.attackLength
-        };
-    }
-
-    private void HandleHandwork(float deviation)
-    {
-        Bike.Rider.handsJoint.distance = deviation switch
-        {
-            > math.EPSILON => configuration.rider.hands.attackLength + (configuration.rider.hands.maxLength - configuration.rider.hands.attackLength) * deviation,
-            < math.EPSILON => configuration.rider.hands.attackLength + (configuration.rider.hands.attackLength - configuration.rider.hands.minLength) * deviation,
-            _ => configuration.rider.hands.attackLength
-        };
-    }*/
-
     /*
     private static void BreakWheel(Rigidbody2D wheel, float force, float breakForce)
     {
