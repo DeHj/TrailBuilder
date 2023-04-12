@@ -8,5 +8,6 @@ namespace Configuration
         public WheelConfiguration backWheel;
         public WheelConfiguration frontWheel;
         public TransmissionConfiguration transmission;
+        public ForkConfiguration fork;
     }
 }
