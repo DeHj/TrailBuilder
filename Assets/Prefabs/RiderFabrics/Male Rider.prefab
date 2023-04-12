@@ -135,7 +135,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.0061878623, y: 0.7540006}
-  m_ConnectedAnchor: {x: 0.00084875163, y: 0.49999073}
+  m_ConnectedAnchor: {x: -0.0071702437, y: 0.49998856}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -143,7 +143,7 @@ HingeJoint2D:
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -90
-    m_UpperAngle: 90
+    m_UpperAngle: 45
 --- !u!233 &7204858082484945809
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dampingRatio: 1
-  frequency: 5
+  frequency: 10
   maxLength: 0.7
   attackLength: 0.6
   minLength: 0.3
@@ -717,6 +717,8 @@ GameObject:
   - component: {fileID: 8250334784944819728}
   - component: {fileID: 2450493457103140861}
   - component: {fileID: 7366966800575865559}
+  - component: {fileID: 8444263201908970158}
+  - component: {fileID: 2173968146811595628}
   m_Layer: 9
   m_Name: Arm
   m_TagString: Untagged
@@ -888,6 +890,45 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 180
+--- !u!231 &8444263201908970158
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756245443710709947}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 6877512533269828053}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: -0.49999985, y: -0.49999997}
+  m_ConnectedAnchor: {x: -0.2, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 0.44664338
+  m_DampingRatio: 0
+  m_Frequency: 0
+--- !u!114 &2173968146811595628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756245443710709947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e086279d8f6e34c962f74d56377aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dampingRatio: 1
+  frequency: 5
+  maxLength: 0.7
+  attackLength: 0.5
+  minLength: 0.2
+  axis: Handwork
 --- !u!1 &9053799356750475772
 GameObject:
   m_ObjectHideFlags: 0
