@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 namespace Configuration
 {
@@ -12,5 +11,6 @@ namespace Configuration
         public float headAngle;
         public float forkLength;
         public float stemLength;
+        public float headTubeLength;
     }
 }

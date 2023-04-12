@@ -1,37 +1,75 @@
+using Interfaces;
+using Unity.Mathematics;
 using UnityEngine;
 
+[RequireComponent(typeof (Camera))]
 public class CameraManager : MonoBehaviour
 {
-    public Rigidbody2D toggledBody;
-    public Camera toggledCamera;
     public float offsetX;
     public float offsetY;
-
-    private Vector3 CameraPosition => toggledCamera.transform.position;
 
     public float minSize;
     public float maxSize;
     public float zoomStep;
 
+    private ICameraTraceable ToggledBody { get; set; }
+    private Camera _toggledCamera;
+
+    private Vector3 CameraPosition
+    {
+        get => _toggledCamera.transform.position;
+        set => _toggledCamera.transform.position = value;
+    }
+
+    private void Start()
+    {
+        _toggledCamera = GetComponent<Camera>();
+    }
+
     private void Update()
     {
-        var position = toggledBody.position;
-        toggledCamera.transform.position = new Vector3(position.x + offsetX, position.y + offsetY, CameraPosition.z);
+        if (ToggledBody is not null)
+        {
+            CameraPosition = (Vector3)ToggledBody.GetPosition() + new Vector3(offsetX, offsetY, CameraPosition.z);
+        }
+
+        HandleZoom();
+    }
+
+    private void HandleZoom()
+    {
+        if (Input.GetButtonUp("Camera Zoom"))
+        {
+            var input = Input.GetAxis("Camera Zoom");
+            if (input > math.EPSILON)
+            {
+                ZoomIn();
+            }
+            else if (input < -math.EPSILON)
+            {
+                ZoomOut();
+            }
+        }
     }
 
     public void ZoomIn()
     {
-        if (toggledCamera.orthographicSize > minSize)
+        if (_toggledCamera.orthographicSize > minSize)
         {
-            toggledCamera.orthographicSize /= zoomStep;
+            _toggledCamera.orthographicSize /= zoomStep;
         }
     }
 
     public void ZoomOut()
     {
-        if (toggledCamera.orthographicSize < maxSize)
+        if (_toggledCamera.orthographicSize < maxSize)
         {
-            toggledCamera.orthographicSize *= zoomStep;
+            _toggledCamera.orthographicSize *= zoomStep;
         }
+    }
+
+    public void SetToggledObject(ICameraTraceable toggledBody)
+    {
+        ToggledBody = toggledBody;
     }
 }
