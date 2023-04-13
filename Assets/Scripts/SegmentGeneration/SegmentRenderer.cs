@@ -10,7 +10,9 @@ namespace SegmentGeneration
         {
             var segmentCollider = GetComponent<EdgeCollider2D>();
             var segmentRenderer = GetComponent<LineRenderer>();
-            
+
+            segmentRenderer.useWorldSpace = false;
+
             segmentRenderer.positionCount = segmentCollider.points.Length;
             segmentRenderer.SetPositions(segmentCollider.points
                 .Select(point => new Vector3(point.x, point.y, 0))

@@ -1,10 +1,13 @@
+using System;
+using SegmentGeneration;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace SegmentGeneration
+namespace Editor
 {
     [CustomEditor(typeof(SegmentRenderer))]
-    public class SegmentRendererEditor : Editor
+    public class SegmentRendererEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
@@ -14,6 +17,7 @@ namespace SegmentGeneration
             {
                 var segmentRenderer = (SegmentRenderer)target;
                 segmentRenderer.Render();
+                EditorUtility.SetDirty(target);
             }
         }
     }
