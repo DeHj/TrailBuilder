@@ -22,7 +22,7 @@ namespace Prefabs.BikeComponents
         private void Start()
         {
             lowerBody.transform.localPosition = new Vector2(0, -configuration.travel);
-            
+
             forkLineRenderer.SetPositions(new []
             {
                 new Vector3(0, 0),
