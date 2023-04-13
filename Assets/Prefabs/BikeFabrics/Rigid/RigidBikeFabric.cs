@@ -80,17 +80,9 @@ namespace Prefabs.BikeFabrics.Rigid
             var wheelCollider = backWheel.GetComponent<CircleCollider2D>();
             backWheel.transform.localScale *= configuration.backWheel.diameter / wheelCollider.radius / 2;
 
-            var joint = backWheel.GetComponent<WheelJoint2D>();
-            var suspension = new JointSuspension2D
-            {
-                frequency = configuration.backWheel.tireFrequency,
-                dampingRatio = configuration.backWheel.tireDampingRatio
-            };
-            joint.suspension = suspension;
-
-            var backJoint = backWheel.GetComponent<WheelJoint2D>();
-            backJoint.connectedBody = connectedFrame;
-            backJoint.connectedAnchor = backWheel.transform.localPosition;
+            var connectionJoint = backWheel.GetComponent<HingeJoint2D>();
+            connectionJoint.connectedBody = connectedFrame;
+            connectionJoint.connectedAnchor = backWheel.transform.localPosition;
 
             return backWheel;
         }
@@ -105,17 +97,9 @@ namespace Prefabs.BikeFabrics.Rigid
             var wheelCollider = frontWheel.GetComponent<CircleCollider2D>();
             frontWheel.transform.localScale *= configuration.frontWheel.diameter / wheelCollider.radius / 2;
 
-            var joint = frontWheel.GetComponent<WheelJoint2D>();
-            var suspension = new JointSuspension2D
-            {
-                frequency = configuration.frontWheel.tireFrequency,
-                dampingRatio = configuration.frontWheel.tireDampingRatio
-            };
-            joint.suspension = suspension;
-
-            var forwardJoint = frontWheel.GetComponent<WheelJoint2D>();
-            forwardJoint.connectedBody = connectedFrame;
-            forwardJoint.connectedAnchor = frontWheel.transform.localPosition;
+            var connectionJoint = frontWheel.GetComponent<HingeJoint2D>();
+            connectionJoint.connectedBody = connectedFrame;
+            connectionJoint.connectedAnchor = frontWheel.transform.localPosition;
 
             return frontWheel;
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UserControl
 {
-    [RequireComponent(typeof(WheelJoint2D), typeof(Rigidbody2D))]
+    [RequireComponent(typeof(HingeJoint2D), typeof(Rigidbody2D))]
     public class MotorWheelControl : MonoBehaviour
     {
         public float speed;
@@ -11,12 +11,12 @@ namespace UserControl
 
         public string axis;
 
-        private WheelJoint2D _wheelMotor;
+        private HingeJoint2D _wheelMotor;
         private Rigidbody2D _wheelRigidbody;
 
         private void Start()
         {
-            _wheelMotor = GetComponent<WheelJoint2D>();
+            _wheelMotor = GetComponent<HingeJoint2D>();
             _wheelRigidbody = GetComponent<Rigidbody2D>();
         }
 
