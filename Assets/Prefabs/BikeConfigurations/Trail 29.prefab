@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5821971838744450101}
   - component: {fileID: 5997809085638237057}
   m_Layer: 0
-  m_Name: Bike Configuration 29 long
+  m_Name: Trail 29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,17 +48,17 @@ MonoBehaviour:
     wheelBase: 1.2
     chainStay: 0.45
     bottomBracketDrop: 0.08
-    headAngle: 69
+    headAngle: 65
     forkLength: 0.6
     stemLength: 0.04
     headTubeLength: 0
   backWheel:
-    diameter: 0.7
+    diameter: 0.74
     tireHeight: 0
     tireDampingRatio: 1
     tireFrequency: 100000000
   frontWheel:
-    diameter: 0.8
+    diameter: 0.74
     tireHeight: 0
     tireDampingRatio: 1
     tireFrequency: 100000000
